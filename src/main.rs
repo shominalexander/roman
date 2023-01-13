@@ -1,17 +1,24 @@
+fn request() -> String {
+ let mut value: String = String::new();
+
+ std::io::stdin().read_line(&mut value).expect("Input failed");
+
+ value = value.trim().to_string();
+ value = value.replace("\n", "") ;
+ value = value.replace("\r", "") ;
+
+ value
+}//fn request() -> String {
+
 fn main(){
  let mut arabic : u16;
  let mut current: u16;
  let mut maximum: u16;
 
  loop {
-  let mut roman: String = String::new();
-
   println!("\r\n\r\nroman:"); 
 
-  std::io::stdin().read_line(&mut roman).expect("Input failed");
-
-  roman = roman.replace("\n", "");
-  roman = roman.replace("\r", "");
+  let mut roman: String = request();
 
   if &roman[..] == "exit" {
    break;   
