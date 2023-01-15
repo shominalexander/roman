@@ -11,10 +11,6 @@ fn request() -> String {
 }//fn request() -> String {
 
 fn main(){
- let mut arabic : u16;
- let mut current: u16;
- let mut maximum: u16;
-
  loop {
   println!("\r\n\r\nroman:"); 
 
@@ -24,13 +20,14 @@ fn main(){
    break;   
 
   } else {//if &roman[..] == "exit" {
-   arabic  = 0u16;
-   current = 0u16;
-   maximum = 0u16;
+   let mut arabic : u16 = 0u16;
+   let mut maximum: u16 = 0u16;
 
    roman = (&roman[..]).to_uppercase().to_string();
 
    for char in roman.chars().rev() {
+    let current: u16;
+
     match char {
      'C' => { current = 0100u16 }
      'D' => { current = 0500u16 }
@@ -39,7 +36,7 @@ fn main(){
      'M' => { current = 1000u16 }
      'V' => { current = 0005u16 }
      'X' => { current = 0010u16 }
-     _   => { current = 0000u16 }
+      _  => { current = 0000u16 }
     }//match char {
 
     if current > maximum { maximum = current; }
